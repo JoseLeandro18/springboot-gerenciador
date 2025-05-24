@@ -22,12 +22,12 @@ public class CertificadoController {
 
     @PostMapping
     public ResponseEntity<String> enviarCertificado(
-            @RequestParam String cnpj,
-            @RequestParam String email,
-            @RequestParam String numeroCertificado,
-            @RequestParam("arquivoCertificaddo") MultipartFile arquivo) {
+            @RequestParam("cnpj_cliente")String cnpj,
+            @RequestParam("email_cliente") String email,
+            @RequestParam("numero_certificado") String numeroCertificado,
+            @RequestParam("nome_arquivo_certificado") MultipartFile arquivo) {
 
-        String pastaDestino = "uploads/";
+        String pastaDestino = System.getProperty("user.dir") + File.separator + "uploads" + File.separator;
         File pasta = new File(pastaDestino);
         if (!pasta.exists()) {
             pasta.mkdirs(); // cria a pasta se não existir
@@ -42,8 +42,10 @@ public class CertificadoController {
             Certificado cert = new Certificado();
             cert.setCnpjCliente(cnpj);
             cert.setEmailCliente(email);
-            cert.setNumeroCertificado(numeroCertificado);
+            cert.setNumeroCertificado("modelo-" + numeroCertificado);
             cert.setNomeArquivoCertificado(nomeArquivo);
+            cert.setNomeArquivosPadroes("padrao-" + numeroCertificado);
+
 
             certificadoRepository.save(cert);
             return ResponseEntity.ok("Certificado enviado com sucesso!");
