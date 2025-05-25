@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Verificar Certificado</title>
+    <link rel="stylesheet" href="/css/verificarCertificado.css">
+</head>
+<body>
+    <div class="bodyContainer">
+        <h2>Verifique seu Certificado</h2>
+
+       <div class="formContainer">
+           <form method="POST" action="/verificar">
+               <label for="cnpj_cliente">CNPJ:</label>
+               <input class="input-text" type="text" id="cnpj_cliente" name="cnpj_cliente" required><br><br>
+
+               <label for="email_cliente">E-mail:</label>
+               <input class="input-text" type="email" id="email_cliente"name="email_cliente" required><br><br>
+
+               <label for="numero_certificado">Número do Certificado:</label>
+               <input class="input-text" type="text" id="numero_certificado" name="numero_certificado" required><br><br>
+
+               <button type="submit">Verificar</button>
+           </form>
+
+           <div class="responseContainer">
+               <div th:if="${arquivoEncontrado}">
+                   <p>Certificado encontrado! Baixe aqui:</p>
+                   <button class="btnDownload"><a th:href="@{'/download/' + ${nomeArquivo}}" target="_blank">Download</a></button>
+               </div>
+
+               <div th:if="${erro}">
+                   <p style="color:red;" th:text="${erro}"></p>
+               </div>
+           </div>
+       </div>
+    </div>
+</body>
+</html>

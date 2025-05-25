@@ -22,8 +22,8 @@ public class CertificadoController {
 
     @PostMapping
     public ResponseEntity<String> enviarCertificado(
-            @RequestParam("cnpj_cliente")String cnpj,
-            @RequestParam("email_cliente") String email,
+            @RequestParam("cnpj_cliente") String cnpjCliente,
+            @RequestParam("email_cliente") String emailCliente,
             @RequestParam("numero_certificado") String numeroCertificado,
             @RequestParam("nome_arquivo_certificado") MultipartFile arquivo) {
 
@@ -40,12 +40,11 @@ public class CertificadoController {
             arquivo.transferTo(destino);
 
             Certificado cert = new Certificado();
-            cert.setCnpjCliente(cnpj);
-            cert.setEmailCliente(email);
-            cert.setNumeroCertificado("modelo-" + numeroCertificado);
+            cert.setCnpjCliente(cnpjCliente);
+            cert.setEmailCliente(emailCliente);
+            cert.setNumeroCertificado(numeroCertificado);
             cert.setNomeArquivoCertificado(nomeArquivo);
             cert.setNomeArquivosPadroes("padrao-" + numeroCertificado);
-
 
             certificadoRepository.save(cert);
             return ResponseEntity.ok("Certificado enviado com sucesso!");

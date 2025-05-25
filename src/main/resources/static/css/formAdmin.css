@@ -1,0 +1,96 @@
+/* Código padrão do CSS */
+@charset "UTF-8";
+
+/* Importações */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Variaveis */
+:root {
+    --font: "Poppins", arial, sans-serif;
+    --color01: #333; /* Cinza */
+    --color02: #f00e0e; /* Vermelho */
+    --color03: #ccc; /* Branco */
+}
+
+/* Código que fazem alteranções em geral */
+* {
+    font-family: var(--font)    ;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    color: white;
+}
+
+body {
+    background-image: url("/img/back.jpg");
+    background-position: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h2 {
+    font-size: 2.5rem;
+    text-shadow: -3px 1px 8px #ccc;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--color01);
+}
+
+.bodyContainer {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    font-size: 1.5rem;
+}
+
+.formContainer {
+    width: 100%;
+    margin: 10px;
+    text-align: left;
+    padding: 1rem;
+    font-style: italic;
+}
+
+.input-text {
+    width: 100%;
+    border-bottom: 2px solid var(--color01);
+    padding: 5px;
+    background: none;
+    font-size: 1.3rem;
+}
+
+.inputFile {
+    width: 100%;
+    border: none;
+}
+
+
+button {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background-color: var(--color01);
+    color: var(--color03);
+    border: none;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+}
+
+button:hover {
+    background-color: var(--color03);
+    color: var(--color01);
+    border: 2px solid var(--color01);
+    font-style: italic;
+    cursor: pointer;
+}
+
