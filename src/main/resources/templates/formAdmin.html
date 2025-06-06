@@ -27,6 +27,18 @@
 
                 <button type="submit">Enviar</button>
             </form>
+
+            <div class="responseContainer">
+                <!-- Mensagem de sucesso -->
+                <div style="color: green; font-weight: bold;" th:if="${mensagemSucesso}">
+                    <p th:text="${mensagemSucesso}"></p>
+                </div>
+
+                <!-- Mensagem de erro -->
+                <div style="color: red; font-weight: bold;" th:if="${mensagemErro}">
+                    <p th:text="${mensagemErro}"></p>
+                </div>
+            </div>
         </div>
     </div>
 
